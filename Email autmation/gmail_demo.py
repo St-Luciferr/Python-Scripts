@@ -22,7 +22,6 @@ with open('files.json') as js:
 # if you don't want to make json file enter username and password and recievers directly removing comment below
 #Email_address = ""
 #Email_password = ""
-receivers = ['suntoss.pandey@gmail.com']
 
 # adding all recievers in single string separated with comma
 receiver = ", ".join(receivers)
