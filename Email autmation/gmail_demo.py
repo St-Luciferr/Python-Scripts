@@ -40,8 +40,9 @@ msg.set_content(body)
 # the files should be in same folder as the script
 #filenames = ['photo1.JPG','chapter 1.pptx']
 #adding attachments
+relative_path = sys.argv[1]+"/"
 for file_name in filenames:
-    with open(file_name, 'rb') as ppt:
+    with open(relative_path + file_name, 'rb') as ppt:
         file_data = ppt.read()
 
     #mimetypes.guess_type gives filetype and encoding as touple
