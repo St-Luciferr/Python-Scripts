@@ -1,4 +1,4 @@
-About the scripts:
+# About the scripts:
 
 - gmail_demo.py takes a single argument for the name of folder containing the attachments
         example: py gmail_demo.py attachments
