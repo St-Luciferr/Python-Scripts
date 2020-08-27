@@ -4,7 +4,7 @@ import json,csv,smtplib,sys,os,mimetypes
 from email.message import EmailMessage
 
 #comment this block if you don't have separete json file
-with open('files.json') as js:
+with open('credentials.json') as js:
     '''
     you need to include the data in a jason file named 'files.json' in a format as below
     {"Email_address": "user@example.com",
