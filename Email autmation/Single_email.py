@@ -22,7 +22,6 @@ with open('credentials.json') as js:
 
 # adding all recievers in single string separated with comma
 receiver = str(sys.argv[2])
-print(receiver)
 
 paths = sys.argv[1]
 filenames = os.listdir(paths)
