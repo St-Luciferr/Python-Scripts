@@ -1,6 +1,6 @@
 # About the scripts:
 ## script should be in the same folder as the attachments folder, csv file and the json file to be passed as arguments else provide the absolute path while running the script
-- gmail_demo.py used to send email to single user takes a two argument for the name of folder containing the attachments
+- Single_email.py used to send email to single user takes a two argument for the name of folder containing the attachments
         example: py gmail_demo.py attachments email_id
                     here attachments is the folder containing the attachments to be send
                     email_id is the email address of the reciever
