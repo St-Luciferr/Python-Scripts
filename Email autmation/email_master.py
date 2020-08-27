@@ -3,20 +3,14 @@
 import json,csv,smtplib,sys,os,mimetypes
 from email.message import EmailMessage
 
-#comment this block if you don't have separete json file
-with open('files.json') as js:
-    '''
-    you need to include the data in a jason file named 'files.json' in a format as below
-    {"Email_address": "user@example.com",
-    "Email_password": "password"}
-    '''
+# this block reads your credentials from the file given as third command line argument while execution
+with open(sys.argv[3]) as js:
     jsn = json.load(js)
     Email_address = jsn['Email_address']
     Email_password = jsn['Email_password']
-# if you don't want to make json file enter username and password and recievers directly removing comment below
-#Email_address = ""
-#Email_password = ""
+#variable to store the list of user to send the email
 receivers=[]
+
 # reading email list from the csv file that contains emails under header 'User Emails'
 # you can modify the key below if you csv file contains email under different header
 with open(sys.argv[2]) as f:
@@ -32,9 +26,12 @@ filenames = os.listdir(paths)
 
 # giving contents to the email
 msg = EmailMessage()
+
+# you can change the subject of your email here
 msg['Subject'] = "Hello"
 msg['From'] = Email_address
 msg['To'] = receiver
+# Edit what content you want to give to your email body
 body = "Few attachment"
 msg.set_content(body)
 # put the name of files with extension that you want to send
@@ -50,10 +47,7 @@ for file_name in filenames:
     main_type,sub_type = file_type.split('/',1)
     msg.add_attachment(file_data,maintype=main_type,subtype=sub_type,filename=file_name)
 
-# with smtplib.SMTP('smtp.gmail.com',587) as smtp:
-#     smtp.ehlo()
-#     smtp.starttls()
-#     smtp.ehlo()
+#initiating SMTP to login to gmail and to send the emails
 with smtplib.SMTP_SSL('smtp.gmail.com',465) as smtp:
     try:
         smtp.login(Email_address, Email_password)
@@ -63,9 +57,6 @@ with smtplib.SMTP_SSL('smtp.gmail.com',465) as smtp:
 
     print("Sending Email")
     try:
-        #This is for sending mail without EmailMessage class
-        # smtp.sendmail(Email_address, receiver , msg)
-
         smtp.send_message(msg)
         print(f"Email Sent to {len(receivers)} users")
     except:
